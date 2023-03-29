@@ -28,6 +28,9 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $isbn = null;
 
+    #[ORM\ManyToOne(inversedBy: 'category')]
+    private ?Category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Book
     public function setIsbn(string $isbn): self
     {
         $this->isbn = $isbn;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

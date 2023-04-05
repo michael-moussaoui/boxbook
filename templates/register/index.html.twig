@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!
+{% endblock %}
+
+{% block body %}
+
+
+	{# {{ form(form)}} #}
+
+	<h1 class="title">Inscription</h1>
+	{{ form_start(form)}}
+
+
+	<div
+		class="form_control">
+		{# {{ form_row(form.pseudo)}} #}
+		{{ form_label(form.uuid, 'uuid', ) }}
+		{{ form_widget(form.uuid, {'attr': {'class': 'input'}}
+		) }}
+	</div>
+	<div
+		class="form_control">
+		{# {{ form_row(form.pseudo)}} #}
+		{{ form_label(form.avatar, 'Avatar', ) }}
+		{{ form_widget(form.avatar, {'attr': {'class': 'input'}}
+		) }}
+	</div>
+	<div
+		class="form_control">
+		{# {{ form_row(form.email)}} #}
+		{{ form_label(form.email, 'Email', ) }}
+		{{ form_widget(form.email, {'attr': {'class': 'input'}}
+		) }}
+	</div>
+	<div class="form_control">
+		{{ form_label(form.password, 'Password', ) }}
+		{{ form_widget(form.password, {'attr': {'class': 'input'}}
+		) }}
+	</div>
+	<button>
+		S'inscrire
+		{# {{ form_widget(form.inscription,{'label' :'Inscription'})}} #}
+	</button>
+
+	{{ form_end(form)}}
+
+
+	{{ encore_entry_script_tags('form')}}
+{% endblock %}

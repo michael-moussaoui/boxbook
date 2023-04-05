@@ -19,11 +19,15 @@ class Category
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Book::class)]
-    private Collection $category;
+    private Collection $book;
 
     public function __construct()
     {
-        $this->category = new ArrayCollection();
+        $this->book = new ArrayCollection();
+    }
+    public function __toString()
+    {
+        return $this->getName ();
     }
 
     public function getId(): ?int
@@ -46,27 +50,27 @@ class Category
     /**
      * @return Collection<int, Book>
      */
-    public function getCategory(): Collection
+    public function getBook(): Collection
     {
-        return $this->category;
+        return $this->book;
     }
 
-    public function addCategory(Book $category): self
+    public function addBook(Book $book): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
-            $category->setCategory($this);
+        if (!$this->getBook->contains($book)) {
+            $this->book->add($book);
+            $book->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(Book $category): self
+    public function removeBook(Book $book): self
     {
-        if ($this->category->removeElement($category)) {
+        if ($this->book->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($category->getCategory() === $this) {
-                $category->setCategory(null);
+            if ($book->getCategory() === $this) {
+                $book->setCategory(null);
             }
         }
 
